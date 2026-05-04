@@ -316,37 +316,6 @@
     color: var(--blue-light);
     flex-shrink: 0;
   }
-
-  /* GALLERY */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem;
-  }
-
-  .gallery-item {
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    background: linear-gradient(135deg, var(--blue-pale), #d0e8fa);
-    transition: transform 0.2s;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .gallery-item:hover { transform: scale(1.03); }
-
-  .gallery-item span.label {
-    font-size: 0.82rem;
-    color: var(--blue-dark);
-    font-weight: 500;
-  }
-
   /* CONTACT */
   .contact-info-card {
     background: var(--white);
@@ -431,7 +400,6 @@
     <a href="#" onclick="showSection('learnings', this)">Learnings</a>
     <a href="#" onclick="showSection('projects', this)">Projects</a>
     <a href="#" onclick="showSection('assignments', this)">Assignments</a>
-    <a href="#" onclick="showSection('gallery', this)">Gallery</a>
     <a href="#" onclick="showSection('contact', this)">Contact Me</a>
   </nav>
 </header>
@@ -599,24 +567,6 @@
     <div class="assignment-arrow">→</div>
   </a>
 
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="section">
-  <h2 class="section-title">Gallery</h2>
-  <div class="section-divider"></div>
-  <p style="color: var(--text-light); font-size: 0.92rem; margin-bottom: 1.8rem;">A glimpse into my academic journey, events, and experiences.</p>
-  <div class="gallery-grid">
-    <div class="gallery-item">📸<span class="label">Hackathon 2024</span></div>
-    <div class="gallery-item">🎓<span class="label">Orientation Day</span></div>
-    <div class="gallery-item">💻<span class="label">Coding Workshop</span></div>
-    <div class="gallery-item">🤝<span class="label">Team Project</span></div>
-    <div class="gallery-item">🏆<span class="label">Tech Fest</span></div>
-    <div class="gallery-item">📚<span class="label">Study Sessions</span></div>
-  </div>
-  <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 1.5rem; text-align: center;">
-    Replace the placeholders above with your own images by editing the HTML.
-  </p>
 </section>
 
 <!-- CONTACT -->
