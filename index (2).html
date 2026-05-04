@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vaishnavi Singh | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-dark: #0d3b6e;
+    --blue-mid: #1a5fa8;
+    --blue-light: #2e86de;
+    --blue-pale: #e8f1fb;
+    --accent: #f0a500;
+    --text-dark: #1a1a2e;
+    --text-mid: #444;
+    --text-light: #777;
+    --bg: #f7f9fc;
+    --white: #ffffff;
+    --border: #d4e2f0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+    padding: 2.5rem 0 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #fff;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.2rem;
+  }
+
+  header p.tagline {
+    color: rgba(255,255,255,0.72);
+    font-size: 0.92rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,0.08);
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  nav a {
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    padding: 0.85rem 1.6rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, color 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+
+  nav a:hover, nav a.active {
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  .section {
+    display: none;
+    padding: 3rem 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+    animation: fadeIn 0.35s ease;
+  }
+
+  .section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.85rem;
+    color: var(--blue-dark);
+    margin-bottom: 0.4rem;
+  }
+
+  .section-divider {
+    width: 52px;
+    height: 3px;
+    background: var(--blue-light);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+
+  /* ABOUT */
+  .about-card {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 2.2rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-bottom: 2rem;
+  }
+
+  .about-card img {
+    width: 200px;
+    height: 220px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    color: var(--blue-mid);
+    margin-bottom: 0.8rem;
+  }
+
+  .about-info p {
+    color: var(--text-mid);
+    font-size: 0.97rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .about-bio {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 2rem 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-mid);
+    font-size: 0.97rem;
+    line-height: 1.82;
+  }
+
+  .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .skill-tag {
+    background: var(--blue-pale);
+    color: var(--blue-dark);
+    border: 1px solid var(--border);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.83rem;
+    font-weight: 500;
+  }
+
+  /* LEARNINGS */
+  .learning-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+  }
+
+  .learning-card:hover { box-shadow: 0 4px 18px rgba(26,95,168,0.10); }
+
+  .learning-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: var(--blue-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .learning-card h3 {
+    font-size: 1.05rem;
+    color: var(--blue-dark);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+
+  .learning-card p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .project-card {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(26,95,168,0.12);
+  }
+
+  .project-header {
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+    padding: 1.5rem;
+    min-height: 90px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .project-header h3 { color: #fff; font-size: 1.05rem; font-weight: 600; }
+
+  .project-body { padding: 1.2rem 1.5rem 1.5rem; }
+
+  .project-body p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+  .tech-tag {
+    background: var(--blue-pale);
+    color: var(--blue-mid);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  /* ASSIGNMENTS */
+  .assignment-link-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 1.3rem 1.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .assignment-link-card:hover {
+    box-shadow: 0 4px 18px rgba(26,95,168,0.12);
+    transform: translateY(-2px);
+  }
+
+  .assignment-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--blue-dark);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .assignment-link-card h3 {
+    font-size: 1rem;
+    color: var(--blue-mid);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+  }
+
+  .assignment-link-card p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  .assignment-arrow {
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: var(--blue-light);
+    flex-shrink: 0;
+  }
+
+  /* GALLERY */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--blue-pale), #d0e8fa);
+    transition: transform 0.2s;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .gallery-item:hover { transform: scale(1.03); }
+
+  .gallery-item span.label {
+    font-size: 0.82rem;
+    color: var(--blue-dark);
+    font-weight: 500;
+  }
+
+  /* CONTACT */
+  .contact-info-card {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 2rem;
+    max-width: 500px;
+  }
+
+  .contact-info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--blue-dark);
+    margin-bottom: 1.2rem;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+    color: var(--text-mid);
+    font-size: 0.93rem;
+  }
+
+  .contact-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: var(--blue-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--blue-dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    margin-top: 3rem;
+  }
+
+  footer span { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    header h1 { font-size: 1.5rem; }
+    header p.tagline { font-size: 0.82rem; }
+    nav a { padding: 0.6rem 0.8rem; font-size: 0.8rem; }
+    .section { padding: 2rem 1rem; }
+    .section-title { font-size: 1.5rem; }
+    .about-card {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+    .about-card img {
+      width: 150px;
+      height: 165px;
+      margin: 0 auto;
+    }
+    .skills-row { justify-content: center; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-info-card { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Vaishnavi Singh</h1>
+  <p class="tagline">Computer Science &amp; Engineering Student</p>
+  <nav>
+    <a href="#" class="active" onclick="showSection('about', this)">About</a>
+    <a href="#" onclick="showSection('learnings', this)">Learnings</a>
+    <a href="#" onclick="showSection('projects', this)">Projects</a>
+    <a href="#" onclick="showSection('assignments', this)">Assignments</a>
+    <a href="#" onclick="showSection('gallery', this)">Gallery</a>
+    <a href="#" onclick="showSection('contact', this)">Contact Me</a>
+  </nav>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="section active">
+  <h2 class="section-title">About Me</h2>
+  <div class="section-divider"></div>
+  <div class="about-card">
+    <img src="photo.jpg" alt="Vaishnavi Singh" />
+    <div class="about-info">
+      <h2>Vaishnavi Singh</h2>
+      <p>I am a Computer Science and Engineering student with a passion for building meaningful solutions through technology. I enjoy exploring new areas of CS — from algorithms and data structures to web development and machine learning.</p>
+      <p>I believe in learning by doing, and I love turning ideas into working projects.</p>
+      <div class="skills-row">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C/C++</span>
+        <span class="skill-tag">HTML/CSS/JS</span>
+        <span class="skill-tag">Data Structures</span>
+        <span class="skill-tag">Algorithms</span>
+        <span class="skill-tag">Machine Learning</span>
+        <span class="skill-tag">Git & GitHub</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-bio">
+    I have worked on academic and personal projects that span core computer science domains — including data structures, algorithms, networking, and web development. I am always eager to take on new challenges and contribute to collaborative, impactful work.
+    <br><br>
+    Currently, I am deepening my knowledge in machine learning and software development while building my portfolio on GitHub at <strong>vaishnxvisingh</strong>.
+  </div>
+</section>
+
+<!-- LEARNINGS -->
+<section id="learnings" class="section">
+  <h2 class="section-title">Learnings</h2>
+  <div class="section-divider"></div>
+
+  <div class="learning-card">
+    <div class="learning-icon">⭐</div>
+    <div>
+      <h3>LAB 1 LEARNING</h3>
+      <p>I learned how to introduce myself clearly and professionally. I understood the importance of being confident while speaking about myself. I learned that first impressions matter in interviews and presentations. I learned to talk about my strengths and skills without exaggerating. I practiced speaking smoothly and clearly. I gained confidence in sharing my background and interests. I learned how tone, body language, and eye contact affect communication. I understood that I should change my introduction depending on the situation. I learned to organize my thoughts so I don't hesitate or get confused. I realized that a good self-introduction helps in building a professional image.</p>
+    </div>
+  </div>
+
+  <div class="learning-card">
+    <div class="learning-icon">⭐</div>
+    <div>
+      <h3>LAB 2 LEARNING</h3>
+      <p>I learned how to record and organize my personal and academic information systematically. I understood the importance of keeping an updated profile for academic and career purposes. I learned to identify my skills, strengths, and areas for improvement. I understood how a profiling sheet helps in preparing for interviews and presentations. I learned to summarize my achievements and academic projects clearly. I realized the value of reflecting on my hobbies and interests in a professional profile. I learned how to present my certifications and courses effectively. I understood how a well-prepared profile builds confidence for self-introduction. I learned the importance of accuracy and honesty while documenting personal information. I realized that profiling helps in setting future goals for learning and skill development.</p>
+    </div>
+  </div>
+
+  <div class="learning-card">
+    <div class="learning-icon">⭐</div>
+    <div>
+      <h3>LAB 3 LEARNINGS</h3>
+      <p>I learned how to give a proper self-introduction. I learned to speak confidently in front of others. I learned the importance of eye contact and body language. I learned how to include important details about myself. I learned to communicate clearly and effectively. I learned to improve my tone and voice while speaking.</p>
+    </div>
+  </div>
+
+  <div class="learning-card">
+    <div class="learning-icon">⭐</div>
+    <div>
+      <h3>LAB 4 LEARNINGS</h3>
+      <p>I learned how to prepare and deliver a presentation. I learned to organize content in a clear and structured way. I learned to speak confidently while presenting. I learned the importance of body language and eye contact. I learned how to use slides effectively. I learned to engage the audience and communicate ideas clearly.</p>
+    </div>
+  </div>
+
+  <div class="learning-card">
+    <div class="learning-icon">⭐</div>
+    <div>
+      <h3>LAB 5 LEARNINGS</h3>
+      <p>I learned to listen attentively during group presentations. I learned to understand different perspectives and ideas. I learned by observing others' presentation styles. I learned the importance of patience and active listening. I learned how teamwork works in presentations. I learned to respect others while they are presenting.</p>
+    </div>
+  </div>
+
+  <div class="learning-card">
+    <div class="learning-icon">⭐</div>
+    <div>
+      <h3>LAB 6 LEARNINGS</h3>
+      <p>I learned how to participate in a group discussion. I learned to express my ideas clearly in a group. I learned to listen to others' opinions respectfully. I learned how to communicate confidently in a group setting. I learned the importance of teamwork and coordination. I learned to respect different viewpoints. I learned how to build on others' ideas during discussion.</p>
+    </div>
+  </div>
+
+  <div class="learning-card">
+    <div class="learning-icon">⭐</div>
+    <div>
+      <h3>LAB 7 LEARNINGS</h3>
+      <p>I learned how to write a formal email. I learned the proper format of email writing. I learned how to write a professional cover letter. I learned how to present my skills and qualifications effectively. I learned the importance of formal language and tone. I learned how to structure content clearly and properly.</p>
+    </div>
+  </div>
+
+  <div class="learning-card">
+    <div class="learning-icon">⭐</div>
+    <div>
+      <h3>LAB 8 LEARNINGS</h3>
+      <p>I learned by discussing the email and cover letter questions given as homework. I learned the correct format through class discussion. I learned from mistakes and feedback provided in class. I learned how to improve my writing style and clarity. I learned the importance of proper structure and formal tone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <h2 class="section-title">Projects</h2>
+  <div class="section-divider"></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-header"><h3>Onion Routing Simulator</h3></div>
+      <div class="project-body">
+        <p>I developed a simulation of onion routing using Python, where messages are encrypted in multiple layers to ensure anonymity. Each node in the network decrypts only its respective layer, forwarding the message without knowing the full path or origin. The project demonstrates concepts like privacy preservation, secure communication, and multi-hop routing.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Cryptography</span>
+          <span class="tech-tag">Onion Routing Protocol</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-header"><h3>Rubik's Cube Solver</h3></div>
+      <div class="project-body">
+        <p>Developed a Rubik's Cube solver using Design and Analysis of Algorithms concepts, where the cube is modeled as a state space problem. The solution uses search algorithms to find the optimal sequence of moves to reach the solved state.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">C++</span>
+          <span class="tech-tag">Search Algorithms</span>
+          <span class="tech-tag">State Space Representation</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-header"><h3>Fake Certificate Detector</h3></div>
+      <div class="project-body">
+        <p>Developed a deep learning-based system to detect fake or tampered certificates by analyzing visual patterns and inconsistencies in document images. The model learns features such as fonts, seals, signatures, and layout anomalies to classify certificates as genuine or fake.</p>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">TensorFlow / PyTorch</span>
+          <span class="tech-tag">CNN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSIGNMENTS -->
+<section id="assignments" class="section">
+  <h2 class="section-title">Assignments</h2>
+  <div class="section-divider"></div>
+
+  <a href="#" class="assignment-link-card">
+    <div class="assignment-num">01</div>
+    <div>
+      <h3>Assignment 01</h3>
+      <p>Click to view assignment</p>
+    </div>
+    <div class="assignment-arrow">→</div>
+  </a>
+
+  <a href="#" class="assignment-link-card">
+    <div class="assignment-num">02</div>
+    <div>
+      <h3>Assignment 02</h3>
+      <p>Click to view assignment</p>
+    </div>
+    <div class="assignment-arrow">→</div>
+  </a>
+
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <h2 class="section-title">Gallery</h2>
+  <div class="section-divider"></div>
+  <p style="color: var(--text-light); font-size: 0.92rem; margin-bottom: 1.8rem;">A glimpse into my academic journey, events, and experiences.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">📸<span class="label">Hackathon 2024</span></div>
+    <div class="gallery-item">🎓<span class="label">Orientation Day</span></div>
+    <div class="gallery-item">💻<span class="label">Coding Workshop</span></div>
+    <div class="gallery-item">🤝<span class="label">Team Project</span></div>
+    <div class="gallery-item">🏆<span class="label">Tech Fest</span></div>
+    <div class="gallery-item">📚<span class="label">Study Sessions</span></div>
+  </div>
+  <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 1.5rem; text-align: center;">
+    Replace the placeholders above with your own images by editing the HTML.
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2 class="section-title">Contact Me</h2>
+  <div class="section-divider"></div>
+  <div class="contact-info-card">
+    <h3>Get in Touch</h3>
+    <div class="contact-row">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <div style="font-weight: 500; color: var(--text-dark);">Email</div>
+        <div style="color: var(--blue-mid); font-size: 0.88rem;">vaishnavi@example.com</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">💼</div>
+      <div>
+        <div style="font-weight: 500; color: var(--text-dark);">LinkedIn</div>
+        <div style="color: var(--blue-mid); font-size: 0.88rem;">linkedin.com/in/vaishnavi-singh</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">🐙</div>
+      <div>
+        <div style="font-weight: 500; color: var(--text-dark);">GitHub</div>
+        <div style="color: var(--blue-mid); font-size: 0.88rem;">github.com/vaishnxvisingh</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div style="font-weight: 500; color: var(--text-dark);">Location</div>
+        <div style="font-size: 0.88rem; color: var(--text-mid);">India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 <span>Vaishnavi Singh</span> · Built with ❤️ &amp; hosted on GitHub Pages
+</footer>
+
+<script>
+  function showSection(id, el) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    el.classList.add('active');
+    return false;
+  }
+</script>
+</body>
+</html>
